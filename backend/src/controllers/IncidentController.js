@@ -1,14 +1,22 @@
-
 const connections = require('../database/connections');
-const { index } = require('./OngController');
 
 
 module.exports ={
     
     async index(request,response){
-        const incidents = await connections('incidents').select('*');
+        const {page = 1} =request.query;                         //Page já começa com o valor 1
+        const [count] = await connections('incidents').count(); //Incrementa um contador que recebe +1 a cada tabela contada
+        response.header('X-Total-Count',count['count(*)']);     //Retorna o count no header da chamana no insomnia
 
-        return response.json(incidents)
+        console.log(count);
+
+        const incidents = await connections('incidents')        
+        .limit(5)                                             //Limite por página
+        .offset((page-1)*5)                                   //A cada página vai mostrar os próximos 5
+        .select('*');                                         
+
+
+        return response.json(incidents);
     },
     
     

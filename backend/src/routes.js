@@ -3,6 +3,10 @@ const routes = express.Router();
 const OngController = require('./controllers/OngController');
 const IncidentController = require('./controllers/IncidentController');
 const ProfileController = require('./controllers/ProfileController');
+const SessionController = require('./controllers/SessionController');
+
+
+routes.post('/session', SessionController.create);
 
 routes.get('/ongs', OngController.index);
 routes.post('/ongs',OngController.create);        //Função que recebe os valores colocados no post nas variáveis definidas
