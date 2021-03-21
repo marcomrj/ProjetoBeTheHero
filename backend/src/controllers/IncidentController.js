@@ -10,10 +10,16 @@ module.exports ={
 
         console.log(count);
 
-        const incidents = await connections('incidents')        
+        const incidents = await connections('incidents')
+        .join('ongs','ongs.id','=','incidents.ong_id')          //Função que chama dados de outra tabela        
         .limit(5)                                             //Limite por página
         .offset((page-1)*5)                                   //A cada página vai mostrar os próximos 5
-        .select('*');                                         
+        .select('incidents.*',                                //Seleciona todos as colunas de incidents
+        'ongs.name',                                          //E seleciona os campos de ongs que coloquei
+        'ongs.email',
+        'ongs.whatsapp',
+        'ongs.city',  
+        'ongs.uf');                                           //No fim aloca todos esses valores na variável                                      
 
 
         return response.json(incidents);
