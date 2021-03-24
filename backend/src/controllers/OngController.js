@@ -11,7 +11,7 @@ module.exports = {
     async create(request,response){
     const {name, email, whatsapp, city, uf} = request.body; //cada variavel recebe um valor (request.body) atribui os valores
     
-    const id = crypto.randomBytes(4).toString('HEX');   //Cria uma chave aleatoria hexadecimal para a const id e a retorna para o front
+    const id = crypto.randomBytes(3).toString('HEX');   //Cria uma chave aleatoria hexadecimal para a const id e a retorna para o front
     
     await connections('ongs').insert({                   //insere os valores nas respectivas variaveis
         id,

@@ -6,9 +6,7 @@ module.exports ={
     async index(request,response){
         const {page = 1} =request.query;                         //Page já começa com o valor 1
         const [count] = await connections('incidents').count(); //Incrementa um contador que recebe +1 a cada tabela contada
-        response.header('X-Total-Count',count['count(*)']);     //Retorna o count no header da chamana no insomnia
-
-        console.log(count);
+        response.header('X-Total-Pages',count['count(*)']);     //Retorna o count no header da chamana no insomnia
 
         const incidents = await connections('incidents')
         .join('ongs','ongs.id','=','incidents.ong_id')          //Função que chama dados de outra tabela        
