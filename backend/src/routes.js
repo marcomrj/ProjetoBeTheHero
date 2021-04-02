@@ -15,5 +15,5 @@ routes.get('/incidents',IncidentController.index);  //Rota que gerencia a listag
 routes.post('/incidents',IncidentController.create);   //Rota que gerencia criação de incidentes
 routes.delete('/incidents/:id', IncidentController.delete); //Rota que genrencia a deletação de incidentes
 
-routes.get('/profile', ProfileController.index);    //Rota que gerencia a listagem de perfis
+routes.get('/profile', ProfileController.index);    //Rota que gerencia a listagem de perfis.
 module.exports = routes;
