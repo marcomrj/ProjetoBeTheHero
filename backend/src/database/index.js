@@ -1,10 +1,10 @@
 const express = require('express'); //Servidor
-const cors = require('cors');       //Segurança do acesso 
+//const cors = require('cors');       //Segurança do acesso 
 const app = express();              //Recebimento do servidor express na variável app
 app.use(express.json());            //Utiliza os parametros como tipo json
 const routes= require('./routes');  // exportação dos códigos da routes
 
-app.use(cors());
+//app.use(cors());
 app.use(routes);
 /*
 Métodos HTTP
